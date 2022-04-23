@@ -3,12 +3,40 @@ let modObscure = document.getElementById('modObscure');
 let menu = document.getElementById('check');
 let cartMenu = document.getElementById('cartMenu');
 let modal = document.getElementById('modal');
+let platos = document.getElementById('menu');
+let notItemImg = document.querySelector('.notItemImg');
 /* Elementos del modo Obsucro */
 let nav = document.getElementById('navi');
 let svgLogo = document.getElementById('styleSvg');
 let modObsureImge = document.getElementById('modObsureImge');
 let listItems = document.querySelectorAll('.listItems');
 let introduction = document.querySelector('.introduction');
+/* Obtenemos los platos */
+
+fetch("/platos.json")
+    .then(response => {
+        return response.json();
+    })
+    .then(jsondata => {
+        jsondata.platos.forEach(element => {
+            if (element.nombre != '') {
+                platos.innerHTML += `
+        <div>
+            <img src="${element.srcImg}" alt="">
+            <div>
+                <p><span>$</span>${element.precio}</p>
+                <p>stock: ${element.stock}<span id="stock"></span></p>
+                <p>${element.nombre}</p>
+                <button data-plato="${element.index}" id="addButton">+</button>
+            </div>
+        </div>
+    `
+            }
+        });
+    });
+
+
+
 /* seteo localstorage */
 let localStorageValues = [
     {
@@ -28,11 +56,14 @@ window.addEventListener('load', () => {
     for (let i = 0; i < localStorageValues.length; i++) {
         if (!localStorageValues[i].key) {
             localStorage.setItem(localStorageValues[i].value, '0');
+
         };
     };
     console.log(localStorageValues[1].key);
     if (localStorageValues[1].key === '1') {
         modObscureF();
+    } else if (localStorageValues[0].key != "0") {
+        notItemImg.classList.add('hidden');
     };
     cartMenu.innerText = localStorage.getItem('cartCount');
 });
@@ -75,5 +106,18 @@ menu.addEventListener('click', () => {
     modal.classList.toggle('modalOn');
 });
 
+/* Añadir elementos a la cuenta */
 
-
+platos.addEventListener('click', e => {
+    if (e.target.id === 'addButton') {
+        /* cartMenu.innerText(localStorage.getItem)*/
+        fetch("/platos.json")
+            .then(response => {
+                return response.json();
+            })
+            .then(jsondata => {
+                
+                localStorage.setItem('cartCount', JSON.stringify(jsondata.platos[0]))
+            });
+    };
+});

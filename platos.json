@@ -1,0 +1,95 @@
+{
+    "platos" : [
+        {
+            "index": "0",
+            "nombre": "Queso y Pollo",
+            "precio": "3.00",
+            "stock": "10",
+            "categoría": [
+                "lacteos",
+                "carne",
+                "mixto"
+            ],
+            "srcImg": "/assets/images/arepamixta.jpg"
+        },
+        {   
+            "index": "1",
+            "nombre": "Queso y Caraota",
+            "precio": "2.50",
+            "stock": "10",
+            "categoría": [
+                "lacteos",
+                "frijol",
+                "mixto"
+            ],
+            "srcImg": "/assets/images/caraotayqueso.jpg"
+        },
+        {
+            "index": "2",
+            "nombre": "Carne Mechada",
+            "precio": "3.00",
+            "stock": "10",
+            "categoría": [
+                "carne"
+            ],
+            "srcImg": "/assets/images/carnemechada.jpg"
+        },
+        {
+            "index": "3",
+            "nombre": "Carne mechada y Queso",
+            "precio": "4.00",
+            "stock": "10",
+            "categoría": "mixto",
+            "srcImg": "/assets/images/carnemechadayqueso.jpg"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        },
+        {
+            "nombre": "",
+            "precio": "",
+            "stock": "10",
+            "categoría": "",
+            "srcImg": "/assets/images/"
+        }
+    ]
+}
