@@ -27,7 +27,7 @@ fetch("/platos.json")
                 <p><span>$</span>${element.precio}</p>
                 <p>stock: ${element.stock}<span id="stock"></span></p>
                 <p>${element.nombre}</p>
-                <button data-plato="${element.index}" id="addButton">+</button>
+                <button data-id="${element.index}" data-name="${element.nombre}" id="addButton">+</button>
             </div>
         </div>
     `
@@ -107,17 +107,40 @@ menu.addEventListener('click', () => {
 });
 
 /* Añadir elementos a la cuenta */
+let cuenta = [];
+
+let elementsLocalStorage = JSON.parse(localStorage.getItem('listItems'));
+localStorage.getItem('listItems') != 0 ? elementsLocalStorage.forEach(element => cuenta.push(element)) : console.log('Aún no hay pedidos');
+
+const addProductsCar = (id, name) => {
+    cuenta.push({
+        id,
+        name,
+        'count': 0
+    });
+    localStorage.setItem('listItems', JSON.stringify(cuenta))
+};
 
 platos.addEventListener('click', e => {
-    if (e.target.id === 'addButton') {
-        /* cartMenu.innerText(localStorage.getItem)*/
+    if (e.target.matches('#addButton')) {
+
+        if (cuenta.length === 0) {
+            addProductsCar(e.target.dataset.id, e.target.dataset.name);
+        } else {
+            cuenta.forEach(element => {
+                if (element.id === e.target.dataset.id) {
+                    element.count = element.count + 1;
+                };
+            });
+        };
+
         fetch("/platos.json")
             .then(response => {
                 return response.json();
             })
             .then(jsondata => {
-                
-                localStorage.setItem('cartCount', JSON.stringify(jsondata.platos[0]))
+                localStorage.setItem('listItems', JSON.stringify(cuenta));
             });
+
     };
 });
