@@ -325,6 +325,7 @@ main li {
     'list'
     'count';
     grid-template-rows: 0.1fr 1fr 0.1fr;
+    font-family: "Average";
 }
 
 #itemsModal h3 {
@@ -340,8 +341,19 @@ main li {
     grid-area: 'list';
 }
 
-#itemsModal div:nth-child(2) {
+#itemsModal > div:nth-child(2) {
     grid-area: "count";
+}
+
+#total {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#total > span:nth-child(2) {
+    position: relative;
+    left: 17rem;
 }
 
 #introPlatos img {
