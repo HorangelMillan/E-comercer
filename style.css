@@ -315,3 +315,63 @@ main li {
 .hidden {
     display: none;
 }
+
+.gridModal {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    'title'
+    'list'
+    'count';
+    grid-template-rows: 0.1fr 1fr 0.1fr;
+}
+
+#itemsModal h3 {
+    text-align: center;
+    grid-area: "title";
+}
+
+#itemsModal > div > div {
+    margin: 0.5rem;
+}
+
+#itemsModal > div:nth-child(1) {
+    grid-area: 'list';
+}
+
+#itemsModal div:nth-child(2) {
+    grid-area: "count";
+}
+
+#introPlatos img {
+    height: 5em;
+    width: 6em;
+    object-fit: cover;
+}
+
+#introPlatos {
+    height: 100%;
+    overflow: auto;
+    padding: 2rem;
+}
+
+footer {
+    height: 10rem;
+    background-color: rgb(206, 136, 6);
+    color: #FFFFFF;
+    font-family: "Average";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer h2 {
+    font-size: 40px;
+    margin-bottom: 2rem;
+}
+
+footer h3 {
+    font-weight: 200;
+}
